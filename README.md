@@ -1,2 +1,2 @@
 # Minesweeper-ReactJS
-Building a Minesweeper clone using ReactJS
+Building a terminal based Minesweeper game using ReactJS
