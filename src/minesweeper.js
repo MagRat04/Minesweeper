@@ -1,13 +1,23 @@
-const blankLIne = ' | | ';
-const guessLine = '1| | ';
-const bombLine = ' |B| ';
+//Formatting the empty array for the game board
+const printBoard = board => {
+    console.log('Current Board: ');
+    console.log(board[0].join(' | '));
+    console.log(board[1].join(' | '));
+    console.log(board[2].join(' | '));
+    
+};
 
-console.log("This is what my empty board would look like: ");
-console.log(blankLIne);
-console.log(blankLIne);
-console.log(blankLIne); 
+//Empty Array that sets up the game board
+const board = [
+    [' ', ' ', ' '],
+    [' ', ' ', ' '],
+    [' ', ' ', ' ']
+];
 
-console.log("This is what a board with a guess and a bomb would look like: ");
-console.log(guessLine);
-console.log(bombLine);
-console.log(blankLIne); 
+//displays the properly formatted game board
+printBoard(board);
+
+board[0][1] = 1;
+board[2][2] = 'B';
+
+printBoard(board);
