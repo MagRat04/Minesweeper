@@ -1,23 +1,46 @@
-//Formatting the empty array for the game board
-const printBoard = board => {
-    console.log('Current Board: ');
-    console.log(board[0].join(' | '));
-    console.log(board[1].join(' | '));
-    console.log(board[2].join(' | '));
-    
+const generatePlayerBoard = (numOfRows, numOfColumns) => {
+    let board = [];
+
+    for (let i = 0; i < numOfRows; i++) {
+        let row = [];
+        for (let j = 0; j < numOfColumns; j++) {
+            row.push(' ');
+        }
+        board.push(row);
+    }
+    return (board);
 };
 
-//Empty Array that sets up the game board
-const board = [
-    [' ', ' ', ' '],
-    [' ', ' ', ' '],
-    [' ', ' ', ' ']
-];
+const generateBombBoard = (numOfRows, numOfColumns, numOfBombs) => {
+    let board = [];
+    for (let i = 0; i < numOfRows; i++) {
+        let row = [];
+        for (let j = 0; j < numOfColumns; j++) {
+            row.push(null);
+        }
+        board.push(row);
+    }
+    
+    let nubmerOfBombsPlaced = 0;
+    while (nubmerOfBombsPlaced < numOfBombs) {
+        let randomRowIndex = Math.floor(Math.random() * numOfRows);
+        let randomColIndex = Math.floor(Math.random() * numOfColumns);
+        board[randomRowIndex][randomColIndex] = 'B';
+        nubmerOfBombsPlaced++;
+        //Has the potential to place bombs on top of already existing bombs
 
-//displays the properly formatted game board
-printBoard(board);
+    }
+    return (board);
+}
 
-board[0][1] = 1;
-board[2][2] = 'B';
+const printBoard = (board) => {
+    console.log(board.map(row => row.join(' | ')).join('\n'));
+}
 
-printBoard(board);
+let playerBoard = generatePlayerBoard(3,4);
+let bombBoard = generateBombBoard(3,4,5);
+
+console.log("Player Board: ");
+printBoard(playerBoard);
+console.log("Bomb Board: ");
+printBoard(bombBoard);
