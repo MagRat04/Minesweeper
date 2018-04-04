@@ -1,3 +1,14 @@
+class Game {
+    constructor(numberOfRows, numberOfColumns, numberOfBombs) {
+        this._board = new Board(numberOfRows, numberOfColumns, numberOfBombs);
+    }
+
+    playMove(rowIndex, columnIndex) {
+        this._board.flipTile(rowIndex, columnIndex);
+    }
+}
+
+
 class Board {
     constructor(numberOfRows, numberOfColumns, numberOfBombs) {
         this._numberOfBombs = numberOfBombs;
